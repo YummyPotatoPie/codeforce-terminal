@@ -1,15 +1,37 @@
-import org.apache.http.client.fluent.Content;
-import org.apache.http.client.fluent.Request;
+import org.apache.commons.cli.*;
 
 import java.io.IOException;
 
-class Terminal {
+class Terminal implements Handler<CommandLine> {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        Options terminalOptions = TerminalOptions.getTerminalOptions();
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = null;
 
-        final Content getResult = Request.Get("http://jsonplaceholder.typicode.com/posts?_limit=10")
-                .execute().returnContent();
-        System.out.println(getResult.asString());
+        try {
+            cmd = parser.parse(terminalOptions, args);
+        }
+        catch (ParseException ex) {
+            HelpFormatter helpFormatter = new HelpFormatter();
+            helpFormatter.printHelp("codeforce-terminal", terminalOptions);
+        }
 
+        Terminal terminal = new Terminal();
+        terminal.handle(cmd);
+
+    }
+
+    public void handle(CommandLine cmd) {
+        if (cmd.hasOption("contest-list")) {
+            ContestList contestList = new ContestList();
+
+            try {
+                contestList.handle(cmd.getOptionValues("contest-list"));
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

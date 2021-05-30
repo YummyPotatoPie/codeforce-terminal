@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class Handler {
+import java.io.IOException;
+
+public interface Handler<T> {
+
+    void handle(T request) throws IOException;
+
 }
