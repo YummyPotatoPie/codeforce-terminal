@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 
 public class ContestList implements Handler<String[]>{
 
-    public void handle(String[] args) throws IOException {
+    public void handle(String[] args) {
         int contentLength = 30;
         boolean isGym = false;
 
@@ -23,8 +23,8 @@ public class ContestList implements Handler<String[]>{
 
         try {
             final Content contests = Request.Get(TerminalConstants.codeforcesUrl + "contest.list?gym=" + isGym)
-                    .execute()
-                    .returnContent();
+                                        .execute()
+                                        .returnContent();
 
             Gson gson = new Gson();
             Type type = new TypeToken<Result<Contest>>() {}.getType();
@@ -37,7 +37,7 @@ public class ContestList implements Handler<String[]>{
                         contest.type, contest.phase);
             }
         }
-        catch (JsonParseException ex) {
+        catch (IOException | JsonParseException ex) {
             System.out.println("Something went wrong");
         }
 
