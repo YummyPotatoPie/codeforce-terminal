@@ -20,14 +20,19 @@ class Terminal implements Handler<CommandLine> {
     }
 
     public void handle(CommandLine cmd) {
-        if (cmd.hasOption("contest-list")) {
+        if (cmd.hasOption("contest.list")) {
             ContestList contestList = new ContestList();
-            contestList.handle(cmd.getOptionValues("contest-list"));
+            contestList.handle(cmd.getOptionValues("contest.list"));
         }
 
-        if (cmd.hasOption("user-info")) {
+        if (cmd.hasOption("user.info")) {
             UserInfo userInfo = new UserInfo();
-            userInfo.handle(cmd.getOptionValues("user-info"));
+            userInfo.handle(cmd.getOptionValues("user.info"));
+        }
+
+        if (cmd.hasOption("user.rating")) {
+            UserRating userRating = new UserRating();
+            userRating.handle(cmd.getOptionValue("user.rating"));
         }
     }
 }
