@@ -1,4 +1,4 @@
-package CodeforceObjects;
+package CodeforcesObjects;
 
 public class User {
 
