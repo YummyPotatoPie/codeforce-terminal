@@ -1,5 +1,5 @@
-import CodeforceObjects.Contest;
-import CodeforceObjects.Result;
+import CodeforcesObjects.Contest;
+import CodeforcesObjects.Result;
 
 public class ContestList extends CodeforcesMethod<String[], Contest> implements Handler<String[]>{
 
@@ -27,7 +27,7 @@ public class ContestList extends CodeforcesMethod<String[], Contest> implements 
 
     @Override
     public String prepareArguments(String[] args) {
-        return "contests.list?gym=" + isGym;
+        return "contest.list?gym=" + isGym;
     }
 
     @Override
