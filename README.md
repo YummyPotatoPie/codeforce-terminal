@@ -1,1 +1,1 @@
-# codeforce-terminal
+# codeforces-terminal
