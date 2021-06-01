@@ -5,6 +5,21 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
+## [0.2.0] - 2021-06-01
+### Added
+
+- user.rating method implementation
+- CodeforcesMethod abstract class
+
+### Changed 
+
+- Implementation of Codeforces API methods
+
+### Fixed
+
+- Bug that throws ClassCastException at every call of API methods
+
+
 ## [0.1.0] - 2021-05-30
 ### Added
 

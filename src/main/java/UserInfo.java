@@ -19,7 +19,7 @@ public class UserInfo extends CodeforcesMethod<String[], User> implements Handle
 
     public void displayMethodResult(Result<User> response) {
         for (User user : response.result) {
-            System.out.printf("Handle: %-15s Rank: %-23s VKID: %-13s Email: %-15s\n",
+            System.out.printf("Handle: %-20s Rank: %-27s VKID: %-13s Email: %-15s\n",
                     user.handle, user.rank,
                     user.vkId != null ? user.vkId : "Hidden",
                     user.email != null ? user.email : "Hidden");

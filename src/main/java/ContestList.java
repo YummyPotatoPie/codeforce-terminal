@@ -8,7 +8,7 @@ public class ContestList extends CodeforcesMethod<String[], Contest> implements 
 
     @Override
     public boolean checkArgumentsValidation(String[] args) {
-        if (args.length == 0) {
+        if (args == null) {
             return true;
         }
         else {

@@ -1,5 +1,5 @@
-import CodeforceObjects.RatingChange;
-import CodeforceObjects.Result;
+import CodeforcesObjects.RatingChange;
+import CodeforcesObjects.Result;
 
 public class UserRating  extends CodeforcesMethod<String, RatingChange> implements Handler<String> {
 
@@ -15,6 +15,8 @@ public class UserRating  extends CodeforcesMethod<String, RatingChange> implemen
 
     @Override
     public void displayMethodResult(Result<RatingChange> response) {
-
+        RatingChange userRating = response.result[0];
+        System.out.printf("ContestID: %-5d ContestName: %-40s Handle: %-5s Rank: %-10d\n",
+                userRating.contestId, userRating.contestName, userRating.handle, userRating.rank);
     }
 }
