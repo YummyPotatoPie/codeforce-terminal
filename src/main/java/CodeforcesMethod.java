@@ -1,7 +1,6 @@
-import CodeforceObjects.Result;
+import CodeforcesObjects.Result;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
 import org.apache.http.ConnectionClosedException;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
@@ -10,6 +9,8 @@ import java.lang.reflect.Type;
 
 public abstract class CodeforcesMethod<T, V> implements Handler<T> {
 
+    protected Type contentType;
+
     protected String invalidArgumentsMessage;
 
     public abstract boolean checkArgumentsValidation(T args);
@@ -17,6 +18,10 @@ public abstract class CodeforcesMethod<T, V> implements Handler<T> {
     public abstract String prepareArguments(T args);
 
     public abstract void displayMethodResult(Result<V> response);
+
+    public void setContentType(Type contentType) {
+        this.contentType = contentType;
+    }
 
     public void handle(T args) {
         if (!checkArgumentsValidation(args)) {
@@ -32,8 +37,7 @@ public abstract class CodeforcesMethod<T, V> implements Handler<T> {
                     .returnContent();
 
             Gson gson = new Gson();
-            Type type = new TypeToken<Result<V>>() {}.getType();
-            Result<V> deserializedContent = gson.fromJson(content.asString(), type);
+            Result<V> deserializedContent = gson.fromJson(content.asString(), this.contentType);
 
             displayMethodResult(deserializedContent);
 
