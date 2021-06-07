@@ -9,7 +9,7 @@ public class ContentOutput extends SettingsChanger implements Handler<String> {
         }
 
         if (request.equals("console")) {
-
+            changeSetting("content-output", "console");
         }
         else {
             if (request.matches("file=+.")) {

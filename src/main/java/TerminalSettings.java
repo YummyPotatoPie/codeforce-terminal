@@ -1,9 +1,9 @@
 public class TerminalSettings {
 
     /**
-     * True - console, False - file
+     * If equals "console" then output to the console, otherwise to file
      */
-    public static boolean contentOutput;
+    public static String contentOutput;
     /**
      * True - wide, False - most necessary
      */

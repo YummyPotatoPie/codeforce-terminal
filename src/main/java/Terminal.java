@@ -19,14 +19,14 @@ class Terminal implements Handler<CommandLine> {
                 String[] setting = scanner.nextLine().split("=");
 
                 switch (setting[0]) {
-                    case "content-output" -> TerminalSettings.contentOutput = Boolean.parseBoolean(setting[1]);
+                    case "content-output" -> TerminalSettings.contentOutput = setting[1];
                     case "wide-output" -> TerminalSettings.wideContent = Boolean.parseBoolean(setting[1]);
                 }
             }
         }
         catch (FileNotFoundException ex) {
             System.out.println("Settings file does not exist. Settings set to default");
-            TerminalSettings.contentOutput = true;
+            TerminalSettings.contentOutput = "console";
             TerminalSettings.wideContent = true;
         }
     }
