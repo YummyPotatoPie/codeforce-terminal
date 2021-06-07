@@ -24,11 +24,18 @@ public class TerminalOptions {
             .desc("Display user rating changes")
             .build();
 
+    public static Option contentOutput = Option.builder()
+            .longOpt("content.output")
+            .hasArg()
+            .desc("Set content output")
+            .build();
+
     public static Options getTerminalOptions() {
         Options options = new Options();
         options.addOption(contestList);
         options.addOption(userInfo);
         options.addOption(userRating);
+        options.addOption(contentOutput);
         return options;
     }
 

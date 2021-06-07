@@ -32,7 +32,7 @@ public abstract class CodeforcesMethod<T, V> implements Handler<T> {
         String preparedArguments = prepareArguments(args);
 
         try {
-            final Content content = Request.Get(TerminalConstants.codeforcesUrl + preparedArguments)
+            final Content content = Request.Get(TerminalSettings.codeforcesUrl + preparedArguments)
                     .execute()
                     .returnContent();
 
