@@ -2,7 +2,7 @@ import java.io.File;
 
 public class ContentOutput extends SettingsChanger implements Handler<String> {
 
-    public void handle(String request) throws Exception {
+    public void handle(String request) {
         if (!new File(System.getProperty("user.dir") + "\\settings").exists()) {
             System.out.println("Settings file corrupted or does not exist");
             return;
@@ -18,7 +18,7 @@ public class ContentOutput extends SettingsChanger implements Handler<String> {
                     System.out.println("File does not exist");
                 }
                 else {
-
+                    changeSetting("content-output", path);
                 }
                 return;
             }

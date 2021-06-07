@@ -4,7 +4,6 @@ import CodeforcesObjects.Result;
 import CodeforcesObjects.User;
 import org.apache.commons.cli.*;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -13,7 +12,7 @@ class Terminal implements Handler<CommandLine> {
 
     public static void getSettings() {
         try {
-            FileReader reader = new FileReader(new File(System.getProperty("user.dir") + "\\settings"));
+            FileReader reader = new FileReader(System.getProperty("user.dir") + "\\settings");
             Scanner scanner = new Scanner(reader);
 
             while (scanner.hasNextLine()) {
@@ -53,7 +52,8 @@ class Terminal implements Handler<CommandLine> {
 
     public void handle(CommandLine cmd) {
         if (cmd.hasOption("content.output")) {
-
+            ContentOutput contentOutput = new ContentOutput();
+            contentOutput.handle(cmd.getOptionValue("content.output"));
         }
 
         if (cmd.hasOption("contest.list")) {
