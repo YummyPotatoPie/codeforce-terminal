@@ -17,6 +17,7 @@ public class UserInfo extends CodeforcesMethod<String[], User> implements Handle
         return usersList.substring(0, usersList.length() - 1);
     }
 
+    @Override
     public void displayMethodResult(Result<User> response) {
         for (User user : response.result) {
             System.out.printf("Handle: %-20s Rank: %-27s VKID: %-13s Email: %-15s\n",
