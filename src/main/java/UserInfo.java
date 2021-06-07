@@ -25,5 +25,5 @@ public class UserInfo extends CodeforcesMethod<String[], User> implements Handle
                     user.email != null ? user.email : "Hidden");
         }
     }
-
+    //test commit
 }
